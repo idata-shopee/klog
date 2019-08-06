@@ -1,4 +1,4 @@
-package io.github.shopee.idata.klog
+package io.github.free.lock.klog
 
 class KLogTest extends org.scalatest.FunSuite {
   test("base") {

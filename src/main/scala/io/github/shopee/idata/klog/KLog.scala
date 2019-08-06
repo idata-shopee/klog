@@ -1,4 +1,4 @@
-package io.github.shopee.idata.klog
+package io.github.free.lock.klog
 
 import java.text.SimpleDateFormat
 import java.util.Calendar
