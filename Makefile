@@ -9,3 +9,6 @@ Release:
 
 cover:
 	@sbt clean coverage test && sbt coverageReport
+
+test:
+	@sbt test
