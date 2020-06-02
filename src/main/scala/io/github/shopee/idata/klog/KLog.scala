@@ -14,6 +14,9 @@ object KLog {
   // listener can get all log information
   private var listener = (message: String) => {}
 
+  // extra format, may have ip and port info
+  private var extraInfo = ""
+
   private val NORMAL_LEVEL = 0
   private val ERROR_LEVEL  = 1
   private val VITAL        = 2
@@ -26,6 +29,8 @@ object KLog {
   def setListener(f: String => Unit) =
     listener = f
 
+  def setExtraInfo(extra: String) = extraInfo = extra
+
   def toggleInspector() =
     inspectOpened = !inspectOpened
 
@@ -36,7 +41,7 @@ object KLog {
 
   def info(title: String, text: String, level: Int = NORMAL_LEVEL) = {
     val today   = Calendar.getInstance().getTime();
-    val logText = s"[klog:${formatter.format(today)}] (${title}) ${text}"
+    val logText = if (extraInfo == "") s"[klog:${formatter.format(today)}] (${title}) ${text}" else s"[klog:${formatter.format(today)}:${extraInfo}] (${title}) ${text}"
 
     if (level >= PRINT_LEVEL) {
       println(logText)
