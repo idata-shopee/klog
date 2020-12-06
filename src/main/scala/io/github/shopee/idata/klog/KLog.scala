@@ -56,6 +56,6 @@ object KLog {
   def logErr(title: String, err: Exception) = {
     val sw = new StringWriter
     err.printStackTrace(new PrintWriter(sw))
-    info(s"error-response-$title", s"${sw.toString}", ERROR_LEVEL)
+    info(s"error-response-$title", s"${sw.toString.replaceAll("\n", "#n")}", ERROR_LEVEL)
   }
 }
